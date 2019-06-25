@@ -1,4 +1,7 @@
-# Others
+# Commands
+
+Remember this commands if you need to use them in the exam (eg. backups, binaries, performance, etc)
+
 
 ## 1. Change Password
 
@@ -9,8 +12,6 @@ passwd
 ```
 
 ## 2. compress/extract
-
-Remember this commands if you need to use them in the exam (eg. backups, binaries, etc)
 
 ### TAR
 
