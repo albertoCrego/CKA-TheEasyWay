@@ -16,8 +16,4 @@ alias kgp='kubectl get pod'
 alias kgs='kubectl get service'
 ```
 
-## Others
-
-### Change Password
-
-To improve velocity setting commands maybe you need to change the password
+*IMPORTANT*: the best way to do this is to copy/paste from the cheatsheet kubernetes page
