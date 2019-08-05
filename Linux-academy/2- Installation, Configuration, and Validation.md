@@ -1,4 +1,5 @@
 Installation, Configuration, and Validation (12%)
+
 - k cluster-info
 - k config view
 - k describe nodes 
