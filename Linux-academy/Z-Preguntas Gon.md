@@ -1,36 +1,42 @@
-Problemas con el kubelet: 
-    - systemctl daemon reboot
-    - enable kubelet (para hacer peristente la configuración)
+Problemas con el kubelet y systemctl: 
+https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/08-bootstrapping-kubernetes-controllers.md
 
-/etc/systemd para comprobar la configuración del kubelet
-08 kubelet bootstrap in the hardway
+```bash
+systemctl daemon-reload
+systemctl restart kubelet
+systemctl enable kubelet (para arrancar el servicio en el reinicio)
+```
 
-CSR RBAC TLS manage certificates
+Ficheros:
 
+```bash
+/etc/systemd/system/kubelet.service.d/ >> Ficheros de config del servicio kubelet
+```
+
+Static pods:
+
+```bash
+/etc/kubernetes/manifest
+```
+
+Kubectl:
+
+```bash
 kubectl run (restart=[jobs, deploy, pod...])
-$ kubectl run nginx --image=nginx   (deployment)
-$ kubectl run nginx --image=nginx --restart=Never   (pod)
-$ kubectl run busybox --image=busybox --restart=OnFailure   (job)
-$ kubectl run busybox --image=busybox --schedule="* * * * *"  --restart=OnFailure (cronJob)
+kubectl run nginx --image=nginx   (deployment)
+kubectl run nginx --image=nginx --restart=Never   (pod)
+kubectl run busybox --image=busybox --restart=OnFailure   (job)
+kubectl run busybox --image=busybox --schedule="* * * * *"  --restart=OnFailure (cronJob)
+```
 
-## generate secrets: 
-$ kubectl create secret generic my-secret --from-literal=foo=bar -o yaml --dry-run > my-secret.yaml
+Create secrets: 
 
+```bash
+kubectl create secret generic my-secret --from-literal=foo=bar -o yaml --dry-run > my-secret.yaml
+```
 
+CSR RBAC TLS manage certificates ¿?
 
-hostpath - volumen, secrets 
+PV hostpath - volumen, secrets 
 
 nslookup - DNS
-
-Ficheros a mirar
-
-static pods
-
-/etc/kubelet/.....service
-etc/kubelet/bootstrap
-/var/lib/kubernetes/manifest
-
-
-~~ 
- systemctl daemon-reload
-systemctl restart kubelet
