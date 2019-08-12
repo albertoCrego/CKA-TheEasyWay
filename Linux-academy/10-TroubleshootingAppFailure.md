@@ -1,4 +1,4 @@
-## Troubleshooting Application Failter
+## Troubleshooting Application Failure
 
 1. `Error`: Check the Last State: Message
 
