@@ -1,13 +1,19 @@
-#CKA Practice Exam: Part 1
+# CKA Practice Exam: Part 1
 
-Create deploy >> kubectl run webapp --image=linuxacademycontent/podofminerva:latest --port=80 --replicas=3 -n web
+Create deploy: 
+    
+    kubectl run webapp --image=linuxacademycontent/podofminerva:latest --port=80 --replicas=3 -n web
+
 Create SVC >> 
+    
     kubectl expose deployment/webapp --port=80 --target-port=80 --type=NodePort -n web --dry-run -o yaml > web-service.yaml
-    + Add namespaces
-    + Add nodePort: `nodePort: 30080`
+    
+   + Add namespaces
+   + Add nodePort: `nodePort: 30080`   
 
- kubectl edit deploy webapp -n web
- ```
+    kubectl edit deploy webapp -n web
+
+ ```yaml
  livenessProbe:
    httpGet:
      path: /healthz
@@ -41,7 +47,8 @@ The name of the second pod should be data-pod2.
     + add namspace
     + change-name
     + add volume mounts
-```
+
+```yaml
 namespace: web
   volumeMounts: 
   - name: temp-data
@@ -51,6 +58,7 @@ volumes:
 persistentVolumeClaim:
 claimName: data-pvc
 ```    
+
 https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/
 
 
@@ -73,61 +81,68 @@ Verify that you have applied the correct l
 
 
 Create a deployment and a service to expose your web front end.
-  kubectl create deployment webfront-deploy  --image=nginx:1.7.8  --dry-run -o yaml > webfront-deploy.yaml
+
+     kubectl create deployment webfront-deploy  --image=nginx:1.7.8  --dry-run -o yaml > webfront-deploy.yaml
 
 Add container port 80, to have your final YAML look like this:
-        apiVersion: apps/v1
-        kind: Deployment
-        metadata:
-          creationTimestamp: null
-          labels:
-            app: webfront-deploy
-          name: webfront-deploy
-        spec:
-          replicas: 1
-          selector:
-            matchLabels:
-              app: webfront-deploy
-          strategy: {}
-          template:
-            metadata:
-              creationTimestamp: null
-              labels:
-                app: webfront-deploy
-            spec:
-              containers:
-              - image: nginx:1.7.8
-                name: nginx
-                ports:
-                - containerPort: 80
-                resources: {}
-        status: {}
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: webfront-deploy
+  name: webfront-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webfront-deploy
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: webfront-deploy
+    spec:
+      containers:
+      - image: nginx:1.7.8
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources: {}
+status: {}
+```
 
-kubectl apply -f webfront-deploy.yaml
-kubectl scale deployment/webfront-deploy --replicas=2
-kubectl expose deployment/webfront-deploy --port=80 --target-port=80 --type=NodePort --dry-run -o yaml > webfront-service.yaml
+    kubectl apply -f webfront-deploy.yaml
+
+    kubectl scale deployment/webfront-deploy --replicas=2
+
+    kubectl expose deployment/webfront-deploy --port=80 --target-port=80 --type=NodePort --dry-run -o yaml webfront-service.yaml
 
 Add the name and the nodePort, the complete YAML will look like this:
-        apiVersion: v1
-        kind: Service
-        metadata:
-          creationTimestamp: null
-          labels:
-            app: webfront-deploy
-          name: webfront-service
-        spec:
-          ports:
-          - port: 80
-            protocol: TCP
-            targetPort: 80
-            nodePort: 30080
-          selector:
-            app: webfront-deploy
-          type: NodePort
-        status:
-          loadBalancer: {}
+```yaml        
+  apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: null
+    labels:
+      app: webfront-deploy
+    name: webfront-service
+  spec:
+    ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 80
+      nodePort: 30080
+    selector:
+      app: webfront-deploy
+    type: NodePort
+  status:
+    loadBalancer: {}
+  ```
 
-kubectl apply -f webfront-service.yaml
+    kubectl apply -f webfront-service.yaml
 
 Verify that you can communicate with your pod directly:
           
@@ -138,46 +153,51 @@ Create a database server to serve as the backend database.
   kubectl run db-redis --image=redis --restart=Never
 
 Create a network policy that will deny communication by default.
-      apiVersion: networking.k8s.io/v1
-      kind: NetworkPolicy
-      metadata:
-        name: default-deny
-      spec:
-        podSelector: {}
-        policyTypes:
-        - Ingress
+```yaml
+  apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    name: default-deny
+  spec:
+    podSelector: {}
+    policyTypes:
+    - Ingress
+```
 
-kubectl apply default-deny.yaml
+    kubectl apply default-deny.yaml
 
 Verify that communication has been disabled by default:
+    
     kubectl run busybox --rm -it --image=busybox /bin/sh
     # wget -O- [pod_ip_address]:80
 
 Apply the labels and create a communication over port 6379 to the database server.
-    kubectl get po
-    kubectl label po <pod_name> role=frontend
-    kubectl label po db-redis role=db
+    
+```
+  kubectl get po
+  kubectl label po <pod_name> role=frontend
+  kubectl label po db-redis role=db
+  kubectl get po --show-labels
+```
+```yaml
+  apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    name: redis-netpolicy
+  spec:
+    podSelector:
+      matchLabels:
+        role: db
+    ingress:
+    - from:
+      - podSelector:
+          matchLabels:
+            role: frontend
+      ports:
+      - port: 6379
+```
+
+    kubectl apply -f redis-netpolicy.yaml
+    kubectl get netpol
+    kubectl describe netpol redis-netpolicy
     kubectl get po --show-labels
-
-
-    apiVersion: networking.k8s.io/v1
-    kind: NetworkPolicy
-    metadata:
-      name: redis-netpolicy
-    spec:
-      podSelector:
-        matchLabels:
-          role: db
-      ingress:
-      - from:
-        - podSelector:
-            matchLabels:
-              role: frontend
-        ports:
-        - port: 6379
-
-
- kubectl apply -f redis-netpolicy.yaml
- kubectl get netpol
- kubectl describe netpol redis-netpolicy
- kubectl get po --show-labels

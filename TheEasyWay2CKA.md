@@ -39,10 +39,10 @@ Complete CV: https://github.com/cncf/curriculum/blob/master/CKA_Curriculum_V1.14
 
   # Proposal Learning Path
 
-      1. Create a place to work I recommend Minikube or IKS (free if you are IBMer) where you can deploy, create and play with the pods. 
-      2. Start reviewing all the documentation from all chapters, the best links is this: https://github.com/walidshaari/Kubernetes-Certified-Administrator all the points connect directly with kubernetes.io
-      3. After, you can do these exercises to be familiar with the Kubectl and Search in Kubernetes.io: https://github.com/dgkanatsios/CKAD-exercises/ (I recommend do it in a real cluster point 1)
-      4.  To finish do the TheHardWay: https://github.com/kelseyhightower/kubernetes-the-hard-way. 
+    1. Create a place to work I recommend Minikube or IKS (free if you are IBMer) where you can deploy, create and play with the pods. 
+    2. Start reviewing all the documentation from all chapters, the best links is this: https://github.com/walidshaari/Kubernetes-Certified-Administrator all the points connect directly with kubernetes.io
+    3. After, you can do these exercises to be familiar with the Kubectl and Search in Kubernetes.io: https://github.com/dgkanatsios/CKAD-exercises/ (I recommend do it in a real cluster point 1)
+    4.  To finish do the TheHardWay: https://github.com/kelseyhightower/kubernetes-the-hard-way. 
 
     And something more... Do these labs: 
 
