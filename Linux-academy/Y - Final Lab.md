@@ -18,7 +18,7 @@ Create SVC >>
      port: 80    
 ```     
 
-# C
+# CKA Practice Exam: Part 2
 You have been given access to a two-node cluster. Within that cluster, a PersistentVolume has already been created. You must identify the size of the volume in order to make a PersistentVolumeClaim and mount the volume to your pod. Once you have created the PVC and mounted it to your running pod, you must copy the contents of /etc/passwd to the volume. Finally, you will delete the pod and create a new pod with the volume mounted in order to demonstrate the persistence of data. You must perform the following tasks in order to complete this hands-on lab:
 
 All objects should be in the web namespace.
@@ -130,7 +130,7 @@ Add the name and the nodePort, the complete YAML will look like this:
 kubectl apply -f webfront-service.yaml
 
 Verify that you can communicate with your pod directly:
-        kubectl run busybox --rm -it --image=busybox /bin/sh
+          
         # wget -O- [pod_ip_address]:80
         # wget --spider --timeout=1 webfront-service
 
