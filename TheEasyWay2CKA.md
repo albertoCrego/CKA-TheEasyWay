@@ -39,12 +39,12 @@ Complete CV: https://github.com/cncf/curriculum/blob/master/CKA_Curriculum_V1.14
 
   # Proposal Learning Path
 
-    1. Create a place to work I recommend Minikube or IKS (free if you are IBMer) where you can deploy, create and play with the pods. 
-    2. Start reviewing all the documentation from all chapters, the best links is this: https://github.com/walidshaari/Kubernetes-Certified-Administrator all the points connect directly with kubernetes.io
-    3. After, you can do these exercises to be familiar with the Kubectl and Search in Kubernetes.io: https://github.com/dgkanatsios/CKAD-exercises/ (I recommend do it in a real cluster point 1)
-    4.  To finish do the TheHardWay: https://github.com/kelseyhightower/kubernetes-the-hard-way. 
+  + Create a place to work I recommend Minikube or IKS (free if you are IBMer) where you can deploy, create and play with the pods. 
+  +  Start reviewing all the documentation from all chapters, the best links is this: https://github.com/walidshaari/Kubernetes-Certified-Administrator all the points connect directly with kubernetes.io
+  + After, you can do these exercises to be familiar with the Kubectl and Search in Kubernetes.io: https://github.com/dgkanatsios/CKAD-exercises/ (I recommend do it in a real cluster point 1)
+  + To finish do the TheHardWay: https://github.com/kelseyhightower/kubernetes-the-hard-way. 
 
-    And something more... Do these labs: 
+    And something more... Do these labs: https://github.com/albertoCrego/CKA-TheEasyWay/blob/master/FinalLabs.md
 
   # And more to study:
 
@@ -65,13 +65,13 @@ Complete CV: https://github.com/cncf/curriculum/blob/master/CKA_Curriculum_V1.14
 
   ## Differents options between creation k8s objects
   
-    ```bash
-    kubectl run (restart=[jobs, deploy, pod...])
-    kubectl run nginx --image=nginx   (deployment)
-    kubectl run nginx --image=nginx --restart=Never   (pod)
-    kubectl run busybox --image=busybox --restart=OnFailure   (job)
-    kubectl run busybox --image=busybox --schedule="0 1 * * *"  --restart=OnFailure (cronJob)
-    ```
+  ```bash
+  kubectl run (restart=[jobs, deploy, pod...])
+  kubectl run nginx --image=nginx   (deployment)
+  kubectl run nginx --image=nginx --restart=Never   (pod)
+  kubectl run busybox --image=busybox --restart=OnFailure   (job)
+  kubectl run busybox --image=busybox --schedule="0 1 * * *"  --restart=OnFailure (cronJob)
+  ```
 
   ## Static pods: 
   
@@ -84,10 +84,10 @@ Complete CV: https://github.com/cncf/curriculum/blob/master/CKA_Curriculum_V1.14
 
   ## Others important topics
 
-     - Manage Hostpath and volumes
-     - Manage Secrets 
-     - Manage DNS resolution about componentes in inside K8s Cluster (with nslookup)
-     - Files to review: /var/lib/kubelet/bootstrap-kubeconfig >> https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/#kubelet-configuration
-     - Kubeconfig: `~/.kube/config`
+  - Manage Hostpath and volumes
+  - Manage Secrets 
+  - Manage DNS resolution about componentes in inside K8s Cluster (with nslookup)
+  - Files to review: /var/lib/kubelet/bootstrap-kubeconfig >> https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/#kubelet-configuration
+  - Kubeconfig: `~/.kube/config`
 
 

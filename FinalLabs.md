@@ -13,6 +13,8 @@ Create SVC >>
 
     kubectl edit deploy webapp -n web
 
+Add liveness and readiness probe in this deployment:
+ 
  ```yaml
  livenessProbe:
    httpGet:
