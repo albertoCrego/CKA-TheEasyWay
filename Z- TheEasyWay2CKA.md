@@ -88,5 +88,6 @@ Complete CV: https://github.com/cncf/curriculum/blob/master/CKA_Curriculum_V1.14
      - Manage Secrets 
      - Manage DNS resolution about componentes in inside K8s Cluster (with nslookup)
      - Files to review: /var/lib/kubelet/bootstrap-kubeconfig >> https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/#kubelet-configuration
+     - Kubeconfig: `~/.kube/config`
 
 
