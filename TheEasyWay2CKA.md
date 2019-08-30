@@ -12,6 +12,10 @@
   - https://github.com/walidshaari/Kubernetes-Certified-Administrator (Links to K8s documentation with all importat topics)
 
   - https://github.com/arush-sal/cka-practice-environment (one test similar to the exam, I recommend doing this one the last day!!)
+  
+ ### Other links, Medium post: 
+- [Medium.com - How I passed the CKA exam](https://medium.com/platformer-blog/how-i-passed-the-cka-certified-kubernetes-administrator-exam-8943aa24d71d)
+- [Medium.com - How to pass the CKA exam on the first attempt](https://medium.com/faun/how-to-pass-certified-kubernetes-administrator-cka-exam-on-first-attempt-36c0ceb4c9e)
 
 
 ## Breakdown of the Test:
