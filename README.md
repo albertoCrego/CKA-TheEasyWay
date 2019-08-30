@@ -9,7 +9,7 @@ In this repository you will find:
    _source: https://linuxacademy.com/course/cloud-native-certified-kubernetes-administrator-cka/_
     
 - **UtilesCheatsheet.md:** Some commands utils. 
-- FinalLab.md: This file join some labs to practise different configurations
+- **FinalLab.md:** This file join some labs to practise different configurations
 
    _source: https://linuxacademy.com/course/cloud-native-certified-kubernetes-administrator-cka/__
 
