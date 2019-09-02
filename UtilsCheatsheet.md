@@ -30,7 +30,16 @@ alias kgp=kubectl get pod
 
 *IMPORTANT*: the best way to do this is to copy/paste from the cheatsheet kubernetes page
 
-
+## Differents options between creation k8s objects
+  
+  ```bash
+  kubectl run (restart=[jobs, deploy, pod...])
+  kubectl run nginx --image=nginx   (deployment)
+  kubectl run nginx --image=nginx --restart=Never   (pod)
+  kubectl run busybox --image=busybox --restart=OnFailure   (job)
+  kubectl run busybox --image=busybox --schedule="0 1 * * *"  --restart=OnFailure (cronJob)
+  ```
+  
 ## Another one
 
 ```bash

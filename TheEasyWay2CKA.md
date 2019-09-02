@@ -67,16 +67,6 @@ Complete CV: https://github.com/cncf/curriculum/blob/master/CKA_Curriculum_V1.14
   - https://kubernetes.io/docs/reference/access-authn-authz/rbac/
 
 
-  ## Differents options between creation k8s objects
-  
-  ```bash
-  kubectl run (restart=[jobs, deploy, pod...])
-  kubectl run nginx --image=nginx   (deployment)
-  kubectl run nginx --image=nginx --restart=Never   (pod)
-  kubectl run busybox --image=busybox --restart=OnFailure   (job)
-  kubectl run busybox --image=busybox --schedule="0 1 * * *"  --restart=OnFailure (cronJob)
-  ```
-
   ## Static pods: 
   
   - https://kubernetes.io/docs/tasks/configure-pod-container/static-pod/
