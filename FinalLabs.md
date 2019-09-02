@@ -1,3 +1,5 @@
+_source: https://linuxacademy.com/course/cloud-native-certified-kubernetes-administrator-cka/_
+
 # CKA Practice Exam: Part 1
 
 Create deploy: 
@@ -203,3 +205,5 @@ Apply the labels and create a communication over port 6379 to the database serve
     kubectl get netpol
     kubectl describe netpol redis-netpolicy
     kubectl get po --show-labels
+    
+_source: https://linuxacademy.com/course/cloud-native-certified-kubernetes-administrator-cka/_    
